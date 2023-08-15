@@ -1,3 +1,6 @@
+@extends('layouts.master')
+
+@section('content')
 @foreach ($grades as $grade)
     - {{$grade->title}}
     <form action="{{url(route('grades.destroy', $grade->id))}}" method="post">
@@ -7,5 +10,5 @@
     </form>
     <br>
 @endforeach
+@endsection
 
-{{session('success')}}

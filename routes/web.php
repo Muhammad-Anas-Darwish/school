@@ -17,14 +17,8 @@ use App\Http\Controllers\LogoutController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('', function () {
-    if (Auth::user())
-        return 'auth';
-    return 'not auth';
+    return '<h1>home</h1>';
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -43,4 +37,5 @@ Route::group(['middleware' => ['guest']], function() {
     Route::post('/login', [LoginController::class, 'login'])->name('login');
 });
 
+// Grades Routes
 Route::resource('grades', GradeController::class);
