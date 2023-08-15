@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\GradeController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\SemesterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +39,6 @@ Route::group(['middleware' => ['guest']], function() {
 
 // Grades Routes
 Route::resource('grades', GradeController::class);
+
+// Semesters Routes
+Route::resource('semesters', SemesterController::class);
