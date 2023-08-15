@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('full_mark');
-            $table->foreignId('class_id')->constrained(table: 'classes');
+            $table->foreignId('grade_id')->constrained(table: 'classes');
         });
     }
 
