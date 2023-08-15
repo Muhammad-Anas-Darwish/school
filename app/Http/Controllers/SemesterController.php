@@ -53,7 +53,7 @@ class SemesterController extends Controller
      */
     public function edit(Semester $semester)
     {
-        // show the edit form and pass the grade
+        // show the edit form and pass the semester
         return view('semesters.edit')->with('semester', $semester);
     }
 

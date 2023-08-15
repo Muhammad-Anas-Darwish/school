@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExamController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LoginController;
@@ -42,3 +43,6 @@ Route::resource('grades', GradeController::class);
 
 // Semesters Routes
 Route::resource('semesters', SemesterController::class);
+
+// exams Routes
+Route::resource('exams', ExamController::class);
