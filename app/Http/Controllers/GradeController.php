@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GradeRequest;
+use App\Http\Requests\StoreGradeRequest;
+use App\Http\Requests\UpdateGradeRequest;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,7 @@ class GradeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(GradeRequest $request)
+    public function store(StoreGradeRequest $request)
     {
         $data = $request->validated();
 
@@ -46,11 +47,8 @@ class GradeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Grade $grade)
     {
-        // get the grade
-        $grade = Grade::find($id);
-
         // show the view and pass the grade to it
         return view('grades.show')->with('grade', $grade);
     }
@@ -58,11 +56,8 @@ class GradeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Grade $grade)
     {
-        // get the grade
-        $grade = Grade::find($id);
-
         // show the edit form and pass the grade
         return view('grades.edit')->with('grade', $grade);
     }
@@ -70,12 +65,12 @@ class GradeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(GradeRequest $request, string $id)
+    public function update(UpdateGradeRequest $request, Grade $grade)
     {
         $data = $request->validated();
 
         // update
-        Grade::find($id)->update($data);
+        $grade->update($data);
 
         // redirect
         return redirect(route('grades.index'))->with('success', 'Grade updated successfully');
@@ -84,10 +79,9 @@ class GradeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Grade $grade)
     {
         // delete
-        $grade = Grade::find($id);
         $grade->delete();
 
         // redirect
