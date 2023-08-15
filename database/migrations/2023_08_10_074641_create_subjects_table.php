@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->integer('full_mark');
             $table->foreignId('grade_id')->constrained(table: 'classes');
+            $table->timestamps();
         });
     }
 

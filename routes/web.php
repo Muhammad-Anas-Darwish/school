@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GradeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -41,3 +42,5 @@ Route::group(['middleware' => ['guest']], function() {
     Route::get('/login', [LoginController::class, 'show'])->name('login.show');
     Route::post('/login', [LoginController::class, 'login'])->name('login');
 });
+
+Route::resource('grades', GradeController::class);

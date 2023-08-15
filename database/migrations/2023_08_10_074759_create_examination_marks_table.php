@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->constrained(table: 'classes');
             $table->foreignId('exam_id')->constrained();
             $table->foreignId('year_id')->constrained();
+            $table->timestamps();
         });
     }
 
