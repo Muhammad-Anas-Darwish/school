@@ -7,6 +7,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\YearController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,6 @@ Route::resource('exams', ExamController::class);
 
 // Classrooms Routes
 Route::resource('classrooms', ClassroomController::class);
+
+// Year Routes
+Route::resource('years', YearController::class);
