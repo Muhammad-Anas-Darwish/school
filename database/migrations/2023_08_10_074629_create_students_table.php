@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('father_name');
+            $table->string('mother_name');
+            $table->date('birth_date');
+            $table->enum('gender', ['male', 'female']);
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('grade_id')->constrained(table: 'classes');
+            $table->foreignId('grade_id')->constrained(table: 'grades');
             $table->foreignId('classroom_id')->constrained();
             $table->timestamps();
         });

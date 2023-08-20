@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\ClassroomController;
-use App\Http\Controllers\ExamController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
+use App\Http\Controllers\YearController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SemesterController;
-use App\Http\Controllers\YearController;
+use App\Http\Controllers\ClassroomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,6 @@ Route::resource('classrooms', ClassroomController::class);
 
 // Year Routes
 Route::resource('years', YearController::class);
+
+// Student Routes
+Route::resource('students', StudentController::class);
