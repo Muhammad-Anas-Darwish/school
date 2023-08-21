@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('mother_name');
             $table->date('birth_date');
             $table->enum('gender', ['male', 'female']);
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->uniqid();
             $table->foreignId('grade_id')->constrained(table: 'grades');
             $table->foreignId('classroom_id')->constrained();
             $table->timestamps();
