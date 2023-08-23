@@ -10,4 +10,16 @@ class Year extends Model
     use HasFactory;
 
     protected $fillable = ['title'];
+
+    /**
+     * @return int
+     * get id of this year
+     */
+    public static function getThisYear(): int | null
+    {
+        $year = self::latest('id')->first();
+        if (!$year)
+            return null;
+        return $year->id;
+    }
 }

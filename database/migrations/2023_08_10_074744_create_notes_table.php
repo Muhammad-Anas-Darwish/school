@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('subject');
             $table->foreignId('year_id')->constrained();
             $table->foreignId('student_id')->constrained();
+            $table->enum('type', ['lateness', 'absence']);
+            $table->boolean('been_read')->default(false);
             $table->timestamps();
         });
     }

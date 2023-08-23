@@ -13,5 +13,6 @@
 
     @include('partials.footer')
     {{ session('success') }}
+    {{ session('error') }}
 </body>
 </html>
