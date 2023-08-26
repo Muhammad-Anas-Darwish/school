@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreStudentRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,6 @@ class StoreStudentRequest extends FormRequest
     {
         return [
             'password' => 'required|min:8',
-            'first_name' => 'required|string|max:32',
-            'last_name' => 'required|string|max:32',
-            'father_name' => 'required|string|max:32',
-            'mother_name' => 'required|string|max:32',
-            'birth_date' => 'required|date',
-            'gender' => 'required|in:male,female',
-            'grade_id' => 'required|exists:grades,id',
-            'classroom_id' => 'required|exists:classrooms,id',
         ];
     }
 }

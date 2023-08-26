@@ -6,6 +6,13 @@
 <form action="{{url(route('students.store'))}}" method="post">
     @csrf
 
+    password
+    <input type="password" name="password" value="{{ old('password') }}">
+    @error('password')
+        <div>- {{ $message }}</div>
+    @enderror
+    <br>
+
     first name
     <input type="text" name="first_name" value="{{ old('first_name') }}">
     @error('first_name')
@@ -47,18 +54,6 @@
         <option value="female" @if (old('gender') == "female") selected @endif>Female</option>
     </select>
     @error('gender')
-        <div>- {{ $message }}</div>
-    @enderror
-    <br>
-
-    user
-    <select name="user_id">
-        <option>--------</option>
-        @foreach ($users as $user)
-            <option value="{{ $user->id }}" @if (old('user_id') == $user->id) selected @endif>{{ $user->username }}</option>
-        @endforeach
-    </select>
-    @error('user_id')
         <div>- {{ $message }}</div>
     @enderror
     <br>

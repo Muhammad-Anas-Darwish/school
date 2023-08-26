@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +60,10 @@ Route::resource('years', YearController::class);
 
 // Student Routes
 Route::resource('students', StudentController::class);
-// TODO show the student account
 
 // Note Routes
 Route::get('notes/all', [NoteController::class, 'ShowNotes'])->name('notes.showNotes')->middleware('auth', 'student');
 Route::resource('notes', NoteController::class);
+
+// User Routes
+Route::resource('users', UserController::class)->only(['edit', 'update'])->parameters(['users' => 'user:username']);

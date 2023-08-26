@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Classroom;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 
@@ -39,6 +40,10 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $data = $request->validated();
+
+        // create user
+        $user = User::create(['username' => $data['first_name'] . $data['last_name'], 'password' => bcrypt($data['password'])]);
+        $data['user_id'] = $user->id;
 
         // store
         Student::create($data);
