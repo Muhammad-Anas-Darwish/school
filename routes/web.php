@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -67,3 +68,6 @@ Route::resource('notes', NoteController::class);
 
 // User Routes
 Route::resource('users', UserController::class)->only(['edit', 'update'])->parameters(['users' => 'user:username']);
+
+// Subject Routes
+Route::resource('subjects', SubjectController::class);
