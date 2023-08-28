@@ -9,6 +9,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\MarksYearController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
@@ -71,3 +72,6 @@ Route::resource('users', UserController::class)->only(['edit', 'update'])->param
 
 // Subject Routes
 Route::resource('subjects', SubjectController::class);
+
+// Subject Routes
+Route::resource('marks_year', MarksYearController::class);

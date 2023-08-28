@@ -5,3 +5,7 @@ Client secret: ulVCUKRlBjYd4ISqCEiqWCYgTrRLC0uzctwYbh9n
 Password grant client created successfully.
 Client ID: 2
 Client secret: XGwAdLBgCAWEckgkYi78cVbWRcqNPjtlGsuyqh3c
+
+add filter in students table
+add id to student
+add auto semester & edit this in marks_year

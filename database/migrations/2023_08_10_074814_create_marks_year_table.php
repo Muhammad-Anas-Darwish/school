@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('marks_year', function (Blueprint $table) {
             $table->id();
             $table->integer('mark');
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('subject_id')->constrained();
+            $table->enum('type', ['homeworks', 'recite', 'participation', 'discipline']);
+            $table->boolean('been_read')->default(false);
+            $table->foreignId('student_id')->constrained(table: 'students');
+            $table->foreignId('subject_id')->constrained(table: 'subjects');
             $table->foreignId('grade_id')->constrained(table: 'grades');
-            $table->foreignId('year_id')->constrained();
-            $table->foreignId('exam_id')->constrained();
+            $table->foreignId('year_id')->constrained(table: 'years');
+            $table->foreignId('semester_id')->constrained(table: 'semesters');
             $table->timestamps();
         });
     }
