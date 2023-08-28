@@ -16,15 +16,17 @@ class SubjectController extends Controller
     public function index(Request $request)
     {
         $grades = Grade::all();
-        $subjects = Subject::all();
+        $subjects = Subject::query();
 
         // Filter
-        // TODO edit this code
-        if ($request->has('title') && $request->get('title') != '') // filter title
-            $subjects = Subject::where('title', 'like', '%' . $request->get('title') . '%')->get();
+        if ($request->has('title')) // filter title
+            $subjects->where('title', 'like', '%' . $request->get('title') . '%');
 
         if ($request->has('grade') && $request->get('grade') != '') // filter grade
-            $subjects = $subjects->where('grade_id', $request->get('grade'));
+            $subjects->where('grade_id', $request->get('grade'));
+
+        // Get All Subjects
+        $subjects = $subjects->get();
 
         return view('subjects.index')->with(['subjects' => $subjects, 'grades' => $grades]);
     }
