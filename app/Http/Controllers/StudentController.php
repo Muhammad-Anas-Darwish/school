@@ -6,20 +6,41 @@ use App\Models\User;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Classroom;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::all();
+        $grades = Grade::all();
+        $classrooms = Classroom::all();
+        $students = Student::query();
 
-        return view('students.index')->with('students', $students);
+        // Filter
+        if ($request->has('first_name')) // filter first_name
+            $students->where('first_name', 'like', '%' . $request->get('first_name') . '%');
+
+        if ($request->has('last_name')) // filter last_name
+            $students->where('last_name', 'like', '%' . $request->get('last_name') . '%');
+
+        if ($request->has('gender') && $request->get('gender') != '') // filter gender
+            $students->where('gender', $request->get('gender'));
+
+        if ($request->has('grade') && $request->get('grade') != '') // filter grade
+            $students->where('grade_id', $request->get('grade'));
+
+        if ($request->has('classroom') && $request->get('classroom') != '') // filter classroom
+            $students->where('classroom_id', $request->get('classroom'));
+
+        // Get All Students
+        $students = $students->get();
+
+        return view('students.index', compact('grades', 'classrooms'))->with('students', $students);
     }
 
     /**
