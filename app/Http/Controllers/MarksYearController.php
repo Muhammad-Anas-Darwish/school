@@ -8,17 +8,42 @@ use App\Models\MarksYear;
 use App\Models\Semester;
 use App\Http\Requests\StoreMarksYearRequest;
 use App\Http\Requests\UpdateMarksYearRequest;
+use App\Models\Grade;
+use App\Models\Year;
+use Illuminate\Http\Request;
 
 class MarksYearController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $marksYear = MarksYear::all();
+        $grades = Grade::all();
+        $years = Year::all();
+        $semesters = Semester::all();
+        $marksYear = MarksYear::query();
 
-        return view('marks_year.index')->with('marksYear', $marksYear);
+        // Filter
+        if ($request->has('mark') && $request->get('mark') != '') // filter mark
+            $marksYear->where('mark', $request->get('mark'));
+
+        if ($request->has('type') && $request->get('type')) // filter type
+            $marksYear->where('type', $request->get('type'));
+
+        if ($request->has('grade') && $request->get('grade') != '') // filter grade
+            $marksYear->where('grade_id', $request->get('grade'));
+
+        if ($request->has('semester') && $request->get('semester') != '') // filter semester
+            $marksYear->where('semester_id', $request->get('semester'));
+
+        if ($request->has('year') && $request->get('year') != '') // filter year
+            $marksYear->where('year_id', $request->get('year'));
+
+        // Get All marksYear
+        $marksYear = $marksYear->get();
+
+        return view('marks_year.index', compact('grades', 'years', 'semesters'))->with('marksYear', $marksYear);
     }
 
     /**
