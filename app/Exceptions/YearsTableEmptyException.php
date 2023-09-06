@@ -3,7 +3,6 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Session\Store;
 
 class YearsTableEmptyException extends Exception
 {

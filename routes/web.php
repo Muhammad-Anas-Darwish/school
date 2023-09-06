@@ -11,6 +11,7 @@ use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\MarksYearController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 
@@ -75,3 +76,7 @@ Route::resource('subjects', SubjectController::class);
 
 // Subject Routes
 Route::resource('marks_year', MarksYearController::class);
+
+// Setting Routes
+Route::get('settings', [SettingController::class, 'edit'])->name('settings.edit');
+Route::patch('settings', [SettingController::class, 'update'])->name('settings.update');

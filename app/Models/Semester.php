@@ -9,5 +9,18 @@ class Semester extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'current_semester'];
+
+    /**
+     * Change All Current semester to false and set one of them true
+     */
+    public static function setCurrentSemester($currentId): void
+    {
+        // Set all values false
+        (new static)->where('current_semester', true)->update(['current_semester' => false]);
+
+        $semester = (new static)->find($currentId);
+        if ($semester)
+            $semester->update(['current_semester' => true]);
+    }
 }
