@@ -26,8 +26,7 @@ class SettingController extends Controller
     {
         $data = $request->validated();
 
-        if (isset($data['semester_id']))
-            Semester::setCurrentSemester($data['semester_id']);
+        Semester::setCurrentSemester($data['semester_id']);
 
         // redirect
         return redirect(route('home'))->with('success', 'Setting updated successfully');

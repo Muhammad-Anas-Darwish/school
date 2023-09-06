@@ -35,7 +35,7 @@ class UpdateSettingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'semester_id' => 'exists:semesters,id',
+            'semester_id' => 'required|exists:semesters,id',
         ];
     }
 }
