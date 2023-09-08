@@ -23,4 +23,16 @@ class Semester extends Model
         if ($semester)
             $semester->update(['current_semester' => true]);
     }
+
+     /**
+     * @return int
+     * get id of current semester
+     */
+    public static function getCurrentSemester(): int | null
+    {
+        $semester = (new static)::where('current_semester', true)->first();
+        if (!$semester)
+            return null;
+        return $semester->id;
+    }
 }
