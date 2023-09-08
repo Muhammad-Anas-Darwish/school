@@ -18,9 +18,9 @@ class Note extends Model
         parent::boot();
 
         static::creating(function ($note) {
-            if (Year::getThisYear() === null)
+            if (Year::getCurrentYear() === null)
                 throw new  YearsTableEmptyException();
-            $note->year_id = Year::getThisYear();
+            $note->year_id = Year::getCurrentYear();
         });
     }
 

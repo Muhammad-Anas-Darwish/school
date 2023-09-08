@@ -8,18 +8,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class UpdateSettingRequest extends FormRequest
 {
     /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array<string, string>
-     */
-    // public function messages(): array
-    // {
-    //     return [
-    //         'semester_id.exists' => 'A semester id is not exists',
-    //     ];
-    // }
-
-    /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
@@ -36,6 +24,7 @@ class UpdateSettingRequest extends FormRequest
     {
         return [
             'semester_id' => 'required|exists:semesters,id',
+            'year_id' => 'required|exists:years,id',
         ];
     }
 }

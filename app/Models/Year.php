@@ -9,15 +9,28 @@ class Year extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'current_year'];
 
     /**
-     * @return int
-     * get id of this year
+     * Change All Current years to false and set one of them true
      */
-    public static function getThisYear(): int | null
+    public static function setCurrentYear($currentId): void
     {
-        $year = self::latest('id')->first();
+        // Set all values false
+        (new static)->where('current_year', true)->update(['current_year' => false]);
+
+        $year = (new static)->find($currentId);
+        if ($year)
+            $year->update(['current_year' => true]);
+    }
+
+     /**
+     * @return int
+     * get id of current year
+     */
+    public static function getCurrentYear(): int | null
+    {
+        $year = (new static)::where('current_year', true)->first();
         if (!$year)
             return null;
         return $year->id;

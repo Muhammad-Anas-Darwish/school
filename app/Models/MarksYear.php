@@ -29,9 +29,9 @@ class MarksYear extends Model
         parent::boot();
 
         static::creating(function ($markYear) {
-            if (Year::getThisYear() === null)
+            if (Year::getCurrentYear() === null)
                 throw new  YearsTableEmptyException();
-            $markYear->year_id = Year::getThisYear();
+            $markYear->year_id = Year::getCurrentYear();
             $markYear->grade_id = $markYear->student->grade_id;
         });
     }
