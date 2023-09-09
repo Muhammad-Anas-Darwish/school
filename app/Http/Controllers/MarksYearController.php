@@ -53,9 +53,8 @@ class MarksYearController extends Controller
     {
         $students = Student::all();
         $subjects = Subject::all();
-        $semesters = Semester::all();
 
-        return view('marks_year.create', compact('students', 'subjects', 'semesters'));
+        return view('marks_year.create', compact('students', 'subjects'));
     }
 
     /**
@@ -88,10 +87,9 @@ class MarksYearController extends Controller
     {
         $students = Student::all();
         $subjects = Subject::all();
-        $semesters = Semester::all();
 
         // show the edit form and pass the mark year
-        return view('marks_year.edit', compact('students', 'subjects', 'semesters'))->with('markYear', $marksYear);
+        return view('marks_year.edit', compact('students', 'subjects'))->with('markYear', $marksYear);
     }
 
     /**

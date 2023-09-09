@@ -6,5 +6,5 @@ use Exception;
 
 class YearsTableEmptyException extends Exception
 {
-    protected $message = 'There must be at least one academic year';
+    protected $message = 'You must select the current academic year';
 }

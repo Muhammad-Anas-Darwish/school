@@ -50,19 +50,6 @@
         <div>- {{ $message }}</div>
     @enderror
 
-    <br>
-
-    semester:
-    <select name="semester_id">
-        <option>--------</option>
-        @foreach ($semesters as $semester)
-            <option value="{{ $semester->id }}" @if ($markYear->semester_id == $semester->id) selected @endif>{{ $semester->title }}</option>
-        @endforeach
-    </select>
-    @error('semester_id')
-        <div>- {{ $message }}</div>
-    @enderror
-
     <input type="submit" value="Save">
 </form>
 @endsection

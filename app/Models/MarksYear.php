@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Exceptions\SemestersTableEmptyException;
 use Illuminate\Database\Eloquent\Model;
 use App\Exceptions\YearsTableEmptyException;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -30,8 +31,13 @@ class MarksYear extends Model
 
         static::creating(function ($markYear) {
             if (Year::getCurrentYear() === null)
-                throw new  YearsTableEmptyException();
+                throw new YearsTableEmptyException();
+
+            if (Semester::getCurrentSemester() === null)
+                throw new SemestersTableEmptyException();
+
             $markYear->year_id = Year::getCurrentYear();
+            $markYear->semester_id = Semester::getCurrentSemester();
             $markYear->grade_id = $markYear->student->grade_id;
         });
     }

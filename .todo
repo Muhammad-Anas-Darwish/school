@@ -7,6 +7,4 @@ Client ID: 2
 Client secret: XGwAdLBgCAWEckgkYi78cVbWRcqNPjtlGsuyqh3c
 
 - create student profile function
-- add filter in marks_year
 - add id to student
-- add auto semester & edit this in marks_year

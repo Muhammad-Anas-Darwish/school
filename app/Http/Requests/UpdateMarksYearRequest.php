@@ -26,7 +26,6 @@ class UpdateMarksYearRequest extends FormRequest
             'type' => 'required|in:homeworks,recite,participation,discipline',
             'student_id' => 'required|exists:students,id',
             'subject_id' => 'required|exists:subjects,id',
-            'semester_id' => 'required|exists:semesters,id',
         ];
     }
 }

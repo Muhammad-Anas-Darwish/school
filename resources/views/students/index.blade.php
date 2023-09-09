@@ -20,7 +20,7 @@
             <option value="{{ $grade->id }}">{{ $grade->title }}</option>
         @endforeach
     </select>
-    <!-- TODO hide classroom -->
+    <!-- TODO hide classroom with js -->
     classroom:
     <select name="classroom">
         <option value="">--------</option>
