@@ -6,8 +6,9 @@
     @csrf
 
     <select name="type">
-        <option value="lateness" @if($note->type == 'lateness') selected @endif>Lateness</option>
-        <option value="absence" @if($note->type == 'absence') selected @endif>Absence</option>
+        @foreach (config('app.select_note_type') as $key => $value)
+            <option value="{{ $key }}" @if($note->type == $key) selected @endif>$value</option>
+        @endforeach
     </select>
     @error('type')
         <div>- {{ $message }}</div>

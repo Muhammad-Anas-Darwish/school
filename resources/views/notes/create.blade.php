@@ -15,8 +15,9 @@
     @enderror
 
     <select name="type">
-        <option value="lateness" @if(old('type') == 'lateness') selected @endif>Lateness</option>
-        <option value="absence" @if(old('type') == 'absence') selected @endif>Absence</option>
+        @foreach (config('app.select_note_type') as $key => $value)
+            <option value="{{ $key }}" @if(old('type') == {{ $key }}) selected @endif>{{ $value }}</option>
+        @endforeach
     </select>
     @error('type')
         <div>- {{ $message }}</div>

@@ -185,4 +185,23 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Select Options
+    |--------------------------------------------------------------------------
+     */
+    'select_gender' => [
+        'male' => 'Male',
+        'female' => 'Female',
+    ],
+    'select_note_type' => [
+        'lateness' => 'Lateness',
+        'absence' => 'Absence',
+    ],
+    'select_mark_year_type' => [
+        'homeworks' => 'Homeworks',
+        'recite' => 'Recite',
+        'participation' => 'Participation',
+        'discipline' => 'Discipline',
+    ],
 ];

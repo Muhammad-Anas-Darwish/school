@@ -16,11 +16,10 @@
     type:
     <select name="type">
         <option>--------</option>
-        <option value="homeworks" @if($markYear->type == 'homeworks') selected @endif>Homeworks</option>
-        <option value="recite" @if($markYear->type == 'recite') selected @endif>Recite</option>
-        <option value="participation" @if($markYear->type == 'participation') selected @endif>Participation</option>
-        <option value="discipline" @if($markYear->type == 'discipline') selected @endif>Discipline</option>
-    </select>
+        @foreach (config('app.select_mark_year_type') as $key => $value)
+            <option value="{{ $key }}" @if($markYear->type == {{ $key }}) selected @endif>{{ $value }}</option>
+        @endforeach
+        </select>
     @error('type')
         <div>- {{ $message }}</div>
     @enderror

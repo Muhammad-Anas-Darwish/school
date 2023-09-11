@@ -7,11 +7,9 @@
     <input type="number" name="mark" max="10">
     type:
     <select name="type">
-        <option value="">--------</option>
-        <option value="homeworks">Homeworks</option>
-        <option value="recite">Recite</option>
-        <option value="participation">Participation</option>
-        <option value="discipline">Discipline</option>
+        @foreach (config('app.select_mark_year_type') as $key => $value)
+            <option value="{{ $key }}">{{ $value }}</option>
+        @endforeach
     </select>
     grade:
     <select name="grade">

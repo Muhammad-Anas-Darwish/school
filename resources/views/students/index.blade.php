@@ -10,8 +10,9 @@
     gender:
     <select name="gender">
         <option value="">--------</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
+        @foreach (config('app.select_gender') as $key => $value)
+            <option value="{{ $key }}">{{ $value }}</option>
+        @endforeach
     </select>
     grade:
     <select name="grade">

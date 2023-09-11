@@ -1,7 +1,7 @@
 <form action="{{url(route('login'))}}" method="POST" >
     @csrf
-    <input type="text" name="username" id="">
-    <input type="password" name="password" id="">
+    <input type="text" name="username" >
+    <input type="password" name="password">
     <input type="submit" value="Login">
 </form>
 
