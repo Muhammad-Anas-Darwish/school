@@ -28,7 +28,7 @@ class StoreStudentRequest extends FormRequest
             'father_name' => 'required|string|max:32',
             'mother_name' => 'required|string|max:32',
             'birth_date' => 'required|date',
-            'gender' => 'required|in:male,female',
+            'gender' => 'required|in:' . implode(",", array_keys(config('app.select_gender'))),
             'grade_id' => 'required|exists:grades,id',
             'classroom_id' => 'required|exists:classrooms,id',
         ];

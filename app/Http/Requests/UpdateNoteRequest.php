@@ -22,7 +22,7 @@ class UpdateNoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => 'required|in:lateness,absence',
+            'type' => 'required|in:lateness,absence' . implode(",", array_keys(config('app.select_note_type'))),
         ];
     }
 }

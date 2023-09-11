@@ -16,7 +16,7 @@
 
     <select name="type">
         @foreach (config('app.select_note_type') as $key => $value)
-            <option value="{{ $key }}" @if(old('type') == {{ $key }}) selected @endif>{{ $value }}</option>
+            <option value="{{ $key }}" @if(old('type') == $key) selected @endif>{{ $value }}</option>
         @endforeach
     </select>
     @error('type')

@@ -23,7 +23,7 @@ class StoreNoteRequest extends FormRequest
     {
         return [
             'student_id' => 'required|exists:students,id',
-            'type' => 'required|in:lateness,absence',
+            'type' => 'required|in:' . implode(",", array_keys(config('app.select_note_type'))),
         ];
     }
 }

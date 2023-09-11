@@ -17,7 +17,7 @@
     <select name="type">
         <option>--------</option>
         @foreach (config('app.select_mark_year_type') as $key => $value)
-            <option value="{{ $key }}" @if($markYear->type == {{ $key }}) selected @endif>{{ $value }}</option>
+            <option value="{{ $key }}" @if($markYear->type == $key) selected @endif>{{ $value }}</option>
         @endforeach
         </select>
     @error('type')

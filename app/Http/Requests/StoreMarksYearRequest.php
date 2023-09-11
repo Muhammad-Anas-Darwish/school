@@ -23,7 +23,7 @@ class StoreMarksYearRequest extends FormRequest
     {
         return [
             'mark' => 'required|max:10',
-            'type' => 'required|in:homeworks,recite,participation,discipline',
+            'type' => 'required|in:' . implode(",", array_keys(config('app.select_mark_year_type'))),
             'student_id' => 'required|exists:students,id',
             'subject_id' => 'required|exists:subjects,id',
         ];

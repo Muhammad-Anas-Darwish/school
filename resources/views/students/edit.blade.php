@@ -44,7 +44,7 @@
     <select name="gender">
         <option>--------</option>
         @foreach (config('app.select_gender') as $key => $value)
-            <option value="{{ $key }}" @if ($student->birth_date == {{ $key }}) selected @endif>{{ $value }}</option>
+            <option value="{{ $key }}" @if ($student->gender == $key) selected @endif>{{ $value }}</option>
         @endforeach
     </select>
     @error('gender')
