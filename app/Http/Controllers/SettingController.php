@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exam;
 use App\Models\Year;
 use App\Models\Semester;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class SettingController extends Controller
     public function edit()
     {
         $currentSemesterId = Semester::where('current_semester', true)->first();
-        if ($currentSemesterId) 
+        if ($currentSemesterId)
             $currentSemesterId = $currentSemesterId['id'];
         $semesters = Semester::all();
 
@@ -24,7 +25,12 @@ class SettingController extends Controller
             $currentYearId = $currentYearId['id'];
         $years = Year::all();
 
-        return view('settings.edit', compact('currentSemesterId', 'semesters', 'currentYearId', 'years'));
+        $currentExamId = Exam::where('current_exam', true)->first();
+        if ($currentExamId)
+            $currentExamId = $currentExamId['id'];
+        $exams = Exam::all();
+
+        return view('settings.edit', compact('currentSemesterId', 'semesters', 'currentYearId', 'years', 'currentExamId', 'exams'));
     }
 
     /**
@@ -36,6 +42,7 @@ class SettingController extends Controller
 
         Semester::setCurrentSemester($data['semester_id']);
         Year::setCurrentYear($data['year_id']);
+        Exam::setCurrentExam($data['exam_id']);
 
         // redirect
         return redirect(route('home'))->with('success', 'Setting updated successfully');

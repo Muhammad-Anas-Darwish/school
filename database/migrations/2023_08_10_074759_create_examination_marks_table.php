@@ -17,8 +17,9 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained();
             $table->foreignId('subject_id')->constrained();
             $table->foreignId('grade_id')->constrained(table: 'grades');
-            $table->foreignId('exam_id')->constrained();
             $table->foreignId('year_id')->constrained();
+            $table->foreignId('exam_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+            $table->boolean('been_read')->default(false);
             $table->timestamps();
         });
     }

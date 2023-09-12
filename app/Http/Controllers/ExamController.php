@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exam;
 use App\Http\Requests\StoreExamRequest;
 use App\Http\Requests\UpdateExamRequest;
+use App\Models\Semester;
 
 class ExamController extends Controller
 {
@@ -23,7 +24,8 @@ class ExamController extends Controller
      */
     public function create()
     {
-        return view('exams.create');
+        $semesters = Semester::all();
+        return view('exams.create', compact('semesters'));
     }
 
     /**
@@ -53,8 +55,10 @@ class ExamController extends Controller
      */
     public function edit(Exam $exam)
     {
+        $semesters = Semester::all();
+
         // show the edit form and pass the exam
-        return view('exams.edit')->with('exam', $exam);
+        return view('exams.edit')->with(['exam' => $exam, 'semesters' => $semesters]);
     }
 
     /**

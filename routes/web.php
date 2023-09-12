@@ -9,6 +9,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\ExaminationMarkController;
 use App\Http\Controllers\MarksYearController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\SettingController;
@@ -74,8 +75,10 @@ Route::resource('users', UserController::class)->only(['edit', 'update'])->param
 // Subject Routes
 Route::resource('subjects', SubjectController::class);
 
-// Subject Routes
+// Mark Year Routes
 Route::resource('marks_year', MarksYearController::class);
+
+Route::resource('examination_marks', ExaminationMarkController::class);
 
 // Setting Routes
 Route::get('settings', [SettingController::class, 'edit'])->name('settings.edit');

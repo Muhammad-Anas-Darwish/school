@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSettingRequest extends FormRequest
+class StoreExaminationMarkRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +22,9 @@ class UpdateSettingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'semester_id' => 'required|exists:semesters,id',
-            'year_id' => 'required|exists:years,id',
-            'exam_id' => 'required|exists:exams,id',
+            'mark' => 'required', // TODO add full mark validate
+            'subject_id' => 'required|exists:subjects,id',
+            'student_id' => 'required|exists:students,id',
         ];
     }
 }

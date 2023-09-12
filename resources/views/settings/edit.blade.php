@@ -28,6 +28,18 @@
             <div>- {{ $message }}</div>
         @enderror
 
+        <br>
+        Exam
+        <select name="exam_id">
+            <option>--------</option>
+            @foreach ($exams as $exam)
+                <option value="{{ $exam->id }}" @if ($currentExamId == $exam->id) selected @endif>{{ $exam->title }}</option>
+            @endforeach
+        </select>
+        @error('exam_id')
+            <div>- {{ $message }}</div>
+        @enderror
+
         <input type="submit" value="Save">
     </form>
 @endsection

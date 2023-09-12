@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('semester_id')->constrained();
+            $table->foreignId('semester_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+            $table->boolean('current_exam')->default(0);
             $table->timestamps();
         });
     }

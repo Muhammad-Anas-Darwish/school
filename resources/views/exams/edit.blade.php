@@ -10,7 +10,12 @@
         <div>- {{ $message }}</div>
     @enderror
 
-    <input type="number" name="semester_id" value="{{ $exam->semester_id }}">
+    <select name="semester_id">
+        <option>--------</option>
+        @foreach ($semesters as $semester)
+            <option value="{{ $semester->id }}" @if ($exam->semester_id == $semester->id) selected @endif>{{ $semester->title }}</option>
+        @endforeach
+    </select>
     @error('semester_id')
         <div>- {{ $message }}</div>
     @enderror
