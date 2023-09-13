@@ -6,6 +6,13 @@
 <form action="{{url(route('students.store'))}}" method="post">
     @csrf
 
+    id
+    <input type="number" name="id" value="{{ old('id') }}">
+    @error('id')
+        <div>- {{ $message }}</div>
+    @enderror
+    <br>
+
     password
     <input type="password" name="password" value="{{ old('password') }}">
     @error('password')

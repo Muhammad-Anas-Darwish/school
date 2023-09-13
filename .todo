@@ -10,4 +10,5 @@ Client secret: XGwAdLBgCAWEckgkYi78cVbWRcqNPjtlGsuyqh3c
 - add id to student
 - creat middlewares
 - add function get marks year for student
+- add function get examination marks for student
 - add filter to examination marks

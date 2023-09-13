@@ -10,7 +10,8 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name', 'last_name', 'father_name', 'mother_name', 'birth_date', 'gender', 'user_id', 'grade_id', 'classroom_id'];
+    protected $fillable = ['id', 'first_name', 'last_name', 'father_name', 'mother_name', 'birth_date', 'gender', 'user_id', 'grade_id', 'classroom_id'];
+    public $incrementing = false;
 
     /**
      * @return BelongsTo
