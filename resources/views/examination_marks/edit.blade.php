@@ -6,7 +6,7 @@
     @method('put')
 
     mark:
-    <input type="number" name="mark" max="10" value="{{ $examinationMark->mark }}">
+    <input type="number" name="mark" value="{{ $examinationMark->mark }}">
     @error('mark')
         <div>- {{ $message }}</div>
     @enderror

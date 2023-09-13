@@ -2,6 +2,7 @@
 
 @section('content')
 
+{{-- filter --}}
 <form>
     mark:
     <input type="number" name="mark" max="10">

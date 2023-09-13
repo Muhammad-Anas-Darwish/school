@@ -6,7 +6,6 @@ Password grant client created successfully.
 Client ID: 2
 Client secret: XGwAdLBgCAWEckgkYi78cVbWRcqNPjtlGsuyqh3c
 
-- creat middlewares
+- creat middlewares (admin)
 - add function get marks year for student
 - add function get examination marks for student
-- add filter to examination marks

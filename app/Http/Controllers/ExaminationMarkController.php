@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use App\Models\Year;
+use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Semester;
+use Illuminate\Http\Request;
 use App\Models\ExaminationMark;
 use App\Http\Requests\StoreExaminationMarkRequest;
 use App\Http\Requests\UpdateExaminationMarkRequest;
@@ -14,11 +18,41 @@ class ExaminationMarkController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $examinationMarks = ExaminationMark::all();
+        $grades = Grade::all();
+        $years = Year::all();
+        $semesters = Semester::all();
+        $subjects = Subject::all();
+        $exams = Exam::all();
+        $examinationMarks = ExaminationMark::query();
 
-        return view('examination_marks.index')->with('examinationMarks', $examinationMarks);
+        // Filter
+        if ($request->has('mark') && $request->get('mark') != '') // filter mark
+            $examinationMarks->where('mark', $request->get('mark'));
+
+        if ($request->has('grade') && $request->get('grade') != '') // filter grade
+            $examinationMarks->where('grade_id', $request->get('grade'));
+
+        if ($request->has('year') && $request->get('year') != '') // filter year
+            $examinationMarks->where('year_id', $request->get('year'));
+
+        if ($request->has('subject') && $request->get('subject') != '') // filter subject
+            $examinationMarks->where('subject_id', $request->get('subject'));
+
+        if ($request->has('exam') && $request->get('exam') != '') // filter exam
+            $examinationMarks->where('exam_id', $request->get('exam'));
+
+        if ($request->has('semester') && $request->get('semester') != '') { // filter semester
+            $examinationMarks->whereHas('exam', function ($query) use ($request) {
+                $query->where('semester_id', $request->get('semester'));
+            });
+        }
+
+        // Get All examinationMarks
+        $examinationMarks = $examinationMarks->get();
+
+        return view('examination_marks.index', compact('grades', 'years', 'semesters', 'subjects', 'exams', 'examinationMarks'));
     }
 
     /**

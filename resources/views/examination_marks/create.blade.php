@@ -5,7 +5,7 @@
     @csrf
 
     mark:
-    <input type="number" name="mark" max="10" value="{{ old('mark') }}">
+    <input type="number" name="mark" value="{{ old('mark') }}">
     @error('mark')
         <div>- {{ $message }}</div>
     @enderror
