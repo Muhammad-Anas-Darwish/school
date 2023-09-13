@@ -9,9 +9,20 @@ use App\Models\Classroom;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
+    /**
+     *  Display the student resource
+     */
+    public function showProfile()
+    {
+        $student = Student::where('user_id', Auth::user()->id)->first();
+        // show the view and pass the student
+        return view('students.show_profile', compact('student'));
+    }
+
     /**
      * Display a listing of the resource.
      */

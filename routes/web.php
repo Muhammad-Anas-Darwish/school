@@ -32,6 +32,7 @@ Route::get('', function () {
 })->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('students/profile', [StudentController::class, 'showProfile'])->name('students.showProfile');
     /**
      * Logout Routes
      */
@@ -64,6 +65,9 @@ Route::resource('years', YearController::class);
 
 // Student Routes
 Route::resource('students', StudentController::class);
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('students/profile', [StudentController::class, 'showProfile'])->name('students.showProfile');
+});
 
 // Note Routes
 Route::get('notes/all', [NoteController::class, 'ShowNotes'])->name('notes.showNotes')->middleware('auth', 'student');
