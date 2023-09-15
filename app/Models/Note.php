@@ -25,6 +25,14 @@ class Note extends Model
     }
 
     /**
+     * Get all notes that have not been read by the student
+     */
+    protected static function getAllUnreadNotes(Student $student): int
+    {
+        return static::where('student_id', $student->id)->where('been_read', false)->count();
+    }
+
+    /**
      * @return BelongsTo
      * @description Get the year to which the note belongs
      */

@@ -43,6 +43,14 @@ class MarksYear extends Model
     }
 
     /**
+     * Get all mark year that have not been read by the student
+     */
+    protected static function getAllUnreadMarkYear(Student $student): int
+    {
+        return static::where('student_id', $student->id)->where('been_read', false)->count();
+    }
+
+    /**
     * @return BelongsTo
     * @description Get The student the makrs year belongs to
     */

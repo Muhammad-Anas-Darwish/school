@@ -80,8 +80,10 @@ Route::resource('users', UserController::class)->only(['edit', 'update'])->param
 Route::resource('subjects', SubjectController::class);
 
 // Mark Year Routes
+Route::get('marks_year/all', [MarksYearController::class, 'showMarksYear'])->name('marks_year.showMarksYear')->middleware('auth', 'student');
 Route::resource('marks_year', MarksYearController::class);
 
+Route::get('examination_marks/all', [ExaminationMarkController::class, 'showExaminationMarks'])->name('examination_marks.showExaminationMarks')->middleware('auth', 'student');
 Route::resource('examination_marks', ExaminationMarkController::class);
 
 // Setting Routes

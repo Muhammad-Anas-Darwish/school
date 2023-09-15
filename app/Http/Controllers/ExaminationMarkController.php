@@ -10,11 +10,26 @@ use App\Models\Subject;
 use App\Models\Semester;
 use Illuminate\Http\Request;
 use App\Models\ExaminationMark;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreExaminationMarkRequest;
 use App\Http\Requests\UpdateExaminationMarkRequest;
 
 class ExaminationMarkController extends Controller
 {
+    /**
+     * Dispaly a lisiting of the marks year of student
+     */
+    public function showExaminationMarks()
+    {
+        $user = Auth::user();
+        $student = $user->student;
+
+        ExaminationMark::where('student_id', $student->id)->where('been_read', false)->update(['been_read' => true]);
+        $examinationMarks = ExaminationMark::where('student_id', $student->id)->get();
+
+        return view('examination_marks.show_examination_marks', compact('examinationMarks'));
+    }
+
     /**
      * Display a listing of the resource.
      */

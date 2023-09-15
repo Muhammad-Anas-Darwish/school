@@ -16,6 +16,7 @@ class NoteController extends Controller
         $user = Auth::user();
         $student = $user->student;
 
+        Note::where('student_id', $student->id)->where('been_read', false)->update(['been_read' => true]);
         $notes = Note::where('student_id', $student->id)->get();
 
         return view('notes.show_notes', compact('notes'));

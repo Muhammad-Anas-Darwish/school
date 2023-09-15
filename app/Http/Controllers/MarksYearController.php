@@ -2,18 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Year;
+use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Subject;
-use App\Models\MarksYear;
 use App\Models\Semester;
+use App\Models\MarksYear;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreMarksYearRequest;
 use App\Http\Requests\UpdateMarksYearRequest;
-use App\Models\Grade;
-use App\Models\Year;
-use Illuminate\Http\Request;
 
 class MarksYearController extends Controller
 {
+    /**
+     * Dispaly a lisiting of the marks year of student
+     */
+    public function showMarksYear()
+    {
+        $user = Auth::user();
+        $student = $user->student;
+
+        marksYear::where('student_id', $student->id)->where('been_read', false)->update(['been_read' => true]);
+        $marksYear = marksYear::where('student_id', $student->id)->get();
+
+        return view('marks_year.show_marks_year', compact('marksYear'));
+    }
+
     /**
      * Display a listing of the resource.
      */
